@@ -1,5 +1,4 @@
 {
   "name": "citiman",
-  "private": true,
-  "dependencies": {}
+  "private": true
 }
