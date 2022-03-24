@@ -2,15 +2,16 @@
 <header id="header" class="fixed-top ">
   <div class="container d-flex align-items-center">
 
-    <h1 class="logo me-auto"><a href="index.html">CITIMAN</a></h1>
+    <h1 class="logo me-auto"><%= link_to "CITIMAN", root_path%></h1>
 
     <nav id="navbar" class="navbar">
       <ul>
-        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-        <li><a class="nav-link scrollto" href="#about">About</a></li>
-        <li><a class="nav-link scrollto" href="#services">Services</a></li>
-        <li><a class="nav-link scrollto" href="#team">Team</a></li>
-        <li class="dropdown"><a href="#"><span>Citiman Navigator</span> <i class="bi bi-chevron-down"></i></a>
+        <li><%= link_to "Home", root_path, class: "nav-link scrollto"  %></li>
+        <li><%= link_to "About", root_path+"#about", class: "nav-link scrollto"%></li>
+        <li><%= link_to "Services", root_path+"#services", class: "nav-link scrollto" %></li>
+        <li><%= link_to "Team", root_path+"#team", class: "nav-link scrollto"%> </li>
+
+        <li class="dropdown"><a href=""><span>Citiman Navigator</span> <i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">Drop Down 1</a></li>
             <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
@@ -22,7 +23,7 @@
             <li><a href="#">Drop Down 2</a></li>
           </ul>
         </li>
-        <li><a class="getstarted scrollto" href="#about">Login</a></li>
+        <%= link_to "Login",login_path,class: "getstarted"  %>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

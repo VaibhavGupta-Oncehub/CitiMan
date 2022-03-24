@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   
   root 'pages#home' 
   
-  get '/login', to: 'sessions#new'
+  get 'login', to: 'sessions#new'
 
 end
