@@ -1855,3 +1855,13 @@ section {
     padding-top: 4px;
   }
 }
+
+// Login Page Styling
+
+.divider:after,
+.divider:before {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #eee;
+}
