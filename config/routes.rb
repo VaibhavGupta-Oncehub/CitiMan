@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  
+  devise_for :migrations
   root 'pages#home' 
+  devise_for :users
   
-  get 'login', to: 'sessions#new'
 
 end
