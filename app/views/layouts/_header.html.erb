@@ -23,7 +23,11 @@
             <li><a href="#">Drop Down 2</a></li>
           </ul>
         </li>
-        <%= link_to "Login",new_user_session_path, class: "getstarted"  %>
+        <% if user_signed_in? %>
+          <%= link_to "Logout",destroy_user_session_path, class: "getstarted", method: :delete  %>
+        <% else %>
+          <%= link_to "Login",new_user_session_path, class: "getstarted"  %>
+        <%end%>
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->

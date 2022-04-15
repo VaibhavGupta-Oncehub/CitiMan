@@ -44,6 +44,24 @@
                   <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
                   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), class:"mx-1 mx-md-4") do |f| %>
                     <%= render "devise/shared/error_messages", resource: resource %>
+                    <%# FirstName fied %>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                        <%= f.label :name ,class: "form-label" %><br />
+                        <%= f.text_field :name , autofocus: true, autocomplete: "name", class:"form-control"%>
+                      </div>
+                    </div>
+
+
+                    <%# SurName fied %>
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div class="form-outline flex-fill mb-0">
+                         <%= f.label :surname, class: "form-label" %><br />
+                        <%= f.text_field :surname , autofocus: true, autocomplete: "surname", class:"form-control"%>
+                      </div>
+                    </div>
 
                     <%# Email fied %>
                     <div class="d-flex flex-row align-items-center mb-4">
@@ -75,18 +93,6 @@
                         <%= f.label :password_confirmation, class:"form-label" %><br />
                         <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control"%>
                       </div>
-                    </div>
-
-                    <%# Terms and conditions %>
-                    <div class="form-check d-flex justify-content-center mb-5">
-                      <input
-                        class="form-check-input me-2"
-                        type="checkbox"
-                        value=""
-                      />
-                      <label class="form-check-label" for="form2Example3">
-                        I agree all statements in Terms and Conditions.
-                      </label>
                     </div>
 
                     <%# Sumbit button %>

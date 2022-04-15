@@ -13,12 +13,28 @@
 
   <body>
     <div>
-      <%= render 'layouts/header'%>
+      <%= render 'layouts/header' %>
       <%# alert for devise %>
-      <% if notice %> <p class="alert alert-success"><%= notice %></p> <% end %>
-      <% if alert %> <p class="alert alert-danger"><%= alert %></p> <% end %>
-      <%= yield %>
-      <%= render 'layouts/footer'%>
+      <div class="flash"> 
+        <% if notice %> 
+          <div class="alert alert-success alert-dismissible fade show " role="alert">
+            <p><%= notice %></p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+       <% end %>
+        <% if alert %> 
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <p><%= alert %></p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        <% end %>
+      </div>
+      <div>
+        <%= yield %>
+      </div>
+      <div>
+        <%= render 'layouts/footer'%>
+      </div>
     </div>
   </body>
 </html>
