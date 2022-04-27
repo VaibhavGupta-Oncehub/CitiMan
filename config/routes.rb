@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
-  
-  devise_for :migrations
+  get 'navigator/home', to: 'navigator#home'
   root 'pages#home' 
   devise_for :users
-  
-
 end
+

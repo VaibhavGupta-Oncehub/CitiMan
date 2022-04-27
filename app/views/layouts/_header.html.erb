@@ -11,16 +11,12 @@
         <li><%= link_to "Services", root_path+"#services", class: "nav-link scrollto" %></li>
         <li><%= link_to "Team", root_path+"#team", class: "nav-link scrollto"%> </li>
 
-        <li class="dropdown"><a href=""><span>Citiman Navigator</span> <i class="bi bi-chevron-down"></i></a>
+        <li class="dropdown"><%= link_to "Citiman Navigator",navigator_home_path, class:"bi bi-chevron-down ml-2" %>
           <ul>
-            <li><a href="#">Drop Down 1</a></li>
-            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-              <ul>
-                <li><a href="#">Deep Drop Down 1</a></li>
-                <li><a href="#">Deep Drop Down 2</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Drop Down 2</a></li>
+            <li><a href="#">Smart Mobility</a></li>
+            <li><a href="#">Smart Environment</a></li>
+            <li><a href="#">Smart People</a></li>
+            <li><a href="#">Smart Energy</a></li>
           </ul>
         </li>
         <% if user_signed_in? %>
