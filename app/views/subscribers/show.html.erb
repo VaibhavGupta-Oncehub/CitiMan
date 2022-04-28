@@ -50,13 +50,18 @@
                     <strong>Email:</strong>
                     <%= @subscriber.email %>
                   </h4>
-                  <div class="divider d-flex align-items-center my-4">
-                    <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
-                  </div>
-                  <div class="btn-group align-items-center" role="group">
-                    <%= link_to 'Edit', edit_subscriber_path(@subscriber),class: "btn btn-primary btn-lg m-2", style:"background-color: #3b5998"  %> 
-                    <%= link_to 'Back', subscribers_path ,class: "btn btn-primary btn-lg m-2", style:"background-color: #3b5998"  %>
-                 </div>
+                  <% if current_user != nil && current_user.admin? %>
+                    <div class="divider d-flex align-items-center my-4">
+                      <p class="text-center fw-bold mx-3 mb-0 text-muted">OR</p>
+                    </div>
+                    <div class="btn-group align-items-center" role="group">
+                      <%= link_to 'Edit', edit_subscriber_path(@subscriber),class: "btn btn-primary btn-lg m-2", style:"background-color: #3b5998"  %> 
+                      <%= link_to 'Back', subscribers_path ,class: "btn btn-primary btn-lg m-2", style:"background-color: #3b5998"  %>
+                   </div>
+                  <%else%>
+                    <%= link_to 'Home', root_path, class: "btn btn-primary text-center btn-lg m-5", style:"background-color: #3b5998"  %> 
+                  <%end%>
+                  
                 </div>
                 <div class="col-md-10 col-lg-6 col-xl-7 text-right d-flex align-items-center order-1 order-lg-2">
                   <img src="https://www.thewebally.com/wp-content/uploads/2016/11/email-marketing.png" class="img-fluid" alt="Sample image">

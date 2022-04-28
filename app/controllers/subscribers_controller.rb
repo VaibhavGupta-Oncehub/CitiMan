@@ -1,4 +1,6 @@
 class SubscribersController < ApplicationController
+  before_action :authenticate_subscribers, only: %i[ index edit update destroy ]
+
   before_action :set_subscriber, only: %i[ show edit update destroy ]
 
   # GET /subscribers or /subscribers.json
@@ -21,7 +23,7 @@ class SubscribersController < ApplicationController
 
   # POST /subscribers or /subscribers.json
   def create
-    @subscriber = Subscriber.new(subscriber_params)
+    @subscriber = Subscriber.new(subscriber_params) 
     respond_to do |format|
       if @subscriber.save
         SubscriberMailer.welcome_email(@subscriber).deliver_now
@@ -66,5 +68,13 @@ class SubscribersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def subscriber_params
       params.require(:subscriber).permit(:email)
+    end
+
+    def authenticate_subscribers
+      if current_user != nil  && current_user.admin
+        redirect_to subscribers_path
+      else
+        redirect_to root_path, alert: "Only admins are allowed to edit/update subscribers details."
+      end
     end
 end

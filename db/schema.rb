@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_27_100053) do
+ActiveRecord::Schema.define(version: 2022_04_28_113502) do
 
   create_table "migrations", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2022_04_27_100053) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
+    t.boolean "admin", default: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
