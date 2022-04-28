@@ -186,3 +186,5 @@
 
 //alert
 $(".alert").alert();
+
+//email newsletter

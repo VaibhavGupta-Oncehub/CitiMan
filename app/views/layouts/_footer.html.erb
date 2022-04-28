@@ -7,9 +7,18 @@
         <div class="col-lg-6">
           <h4>Join Our Newsletter</h4>
           <p>Know more about the regualr updates on CitiMan with our newsletter service.</p>
-          <form action="" method="post">
-            <input type="email" name="email" placeholder="Enter your email address"><input type="submit" value="Subscribe" >
-          </form>
+
+          <%= form_for(:subscriber, url: subscribers_path, html: {method: :post }) do |f| %>
+            <div class="d-flex flex-row align-items-center">
+              <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+              <div class="form-outline flex-fill mb-0">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"Enter your email address",class:"form-control"%>
+              </div>
+            </div>
+            <div class="actions">
+              <%= f.submit "Subscribe",class:"btn btn-primary btn-lg btn-block d-flex justify-content-center", style:"background-color: #3b5998" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
