@@ -2,7 +2,6 @@
   "name": "citiman",
   "private": true,
   "dependencies": {
-    "glightbox": "^3.2.0",
     "lightbox2": "^2.11.3"
   }
 }

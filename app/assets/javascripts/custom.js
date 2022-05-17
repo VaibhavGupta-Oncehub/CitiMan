@@ -185,6 +185,8 @@
 })();
 
 //alert
-$(".alert").alert();
+// $(".alert").alert();
 
-//email newsletter
+
+
+
