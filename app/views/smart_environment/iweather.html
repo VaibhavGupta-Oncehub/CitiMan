@@ -1,0 +1,2115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <!-- <link rel="dns-prefetch" href="https://cdnstatic.ventusky.com" />
+    <link rel="dns-prefetch" href="https://data.ventusky.com" />
+    <link rel="dns-prefetch" href="https://api.ventusky.com" /> -->
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- <meta name="apple-itunes-app" content="app-id=1280984498"> -->
+    <title>Ventusky</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnstatic.ventusky.com/media/style.css?1650633420"
+    />
+    <script
+      type="text/javascript"
+      async=""
+      src="https://www.google-analytics.com/analytics.js"
+    ></script>
+    <script>
+      document.addEventListener("gesturestart", function (e) {
+        e.preventDefault();
+      });
+    </script>
+    <meta
+      name="description"
+      content="Live wind, rain, radar or temperature maps, more than 50 weather layers, detailed forecast for your place, data from the best weather forecast models with high resolution"
+    />
+    <meta
+      name="keywords"
+      content="weather, forecast, maps, wind, temperature, precipitation, rain, cloud, pressure, CAPE"
+    />
+    <meta name="application-name" content="Ventusky" />
+
+    <link rel="canonical" href="https://www.ventusky.com" />
+    <meta property="og:title" content="Ventusky - Weather Forecast Maps" />
+
+    <!-- <meta
+      property="og:image"
+      content="https://cdnstatic.ventusky.com/images/social-app.jpg"
+    /> -->
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@Ventuskycom" />
+    <meta
+      name="twitter:title"
+      content="Ventusky - Wind, Rain and Temperature Maps"
+    />
+    <meta
+      name="twitter:description"
+      content="Live wind, rain, radar or temperature maps, more than 50 weather layers, detailed forecast for your place, data from the best weather forecast models with high resolution"
+    />
+    <!-- <meta
+      name="twitter:image"
+      content="https://cdnstatic.ventusky.com/images/social-app.jpg"
+    /> -->
+
+    <!-- <link
+      rel="shortcut icon"
+      href="https://cdnstatic.ventusky.com/images/favicon.ico"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://cdnstatic.ventusky.com/images/apple-touch-icon-152x152.png"
+    /> -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+  </head>
+  <body class="">
+    <br />
+    <form id="header" class="">
+      <h1><a href="./">Ventusky: Weather Forecast Maps</a></h1>
+      <label for="search-q">
+        <input
+          name="q"
+          autocomplete="off"
+          id="search-q"
+          class="p"
+          value="Search for location…"
+        />
+      </label>
+      <ul class="d">
+        <li class="progress">Not found.</li>
+      </ul>
+      <a class="r" title="Find my position"></a>
+    </form>
+    <menu class="k"
+      ><li id="menu-app"><a class="xo" href="/app">App</a></li>
+      <li id="menu-share"><a>Share</a></li>
+      <li id="menu-settings"><a>Settings</a></li>
+      <li>
+        <a href="about" id="menu-about" class="button">About</a>
+      </li>
+    </menu>
+
+    <!-- <div id="news" data-news="news-16" style="width: 250px; display: block">
+      <a href="https://www.ventusky.com/?m=ecmwf_lres">
+        <strong>Try Ventusky app for Android and iOS</strong>
+        <strong>New: ECMWF weather model</strong>
+        <img
+          src="https://cdnstatic.ventusky.com/images/promo/ecmwf.png"
+          alt="ECMWF weather model"
+        />
+      </a>
+      <div class="g"></div>
+    </div> -->
+
+    <script>
+      var MapOptions = {
+        root: "https://www.ventusky.com/",
+        lang: "en-us",
+        lat: 38,
+        lon: -97,
+        zoom: 5,
+        model: "auto",
+        now: Date.UTC(2022, 4, 21, 12, 49),
+
+        "icon-deTimelineStart": Date.UTC(2022, 0, 1, 0),
+        "icon-deTimelineEnd": Date.UTC(2022, 4, 23, 9),
+        "icon-deUpdated": Date.UTC(2022, 4, 21, 9, 0),
+        "icon-deAccumulationStart": Date.UTC(2022, 4, 21, 9),
+
+        "icon-waterTimelineStartTimelineStart": Date.UTC(2017, 6, 1, 0),
+        "icon-waterTimelineStartTimelineEnd": Date.UTC(2022, 4, 28, 0),
+        "icon-waterTimelineStartUpdated": Date.UTC(2022, 4, 21, 0, 0),
+
+        "icon-eu-waterTimelineStart": Date.UTC(2020, 1, 17, 0),
+        "icon-eu-waterTimelineEnd": Date.UTC(2022, 4, 24, 6),
+        "icon-eu-waterUpdated": Date.UTC(2022, 4, 21, 0, 0),
+
+        gfsTimelineStart: Date.UTC(2018, 0, 1, 0),
+        gfsTimelineEnd: Date.UTC(2022, 5, 4, 6),
+        gfsUpdated: Date.UTC(2022, 4, 21, 6, 0),
+        gfsAccumulationStart: Date.UTC(2022, 4, 21, 9),
+
+        gemTimelineStart: Date.UTC(2022, 0, 1, 0),
+        gemTimelineEnd: Date.UTC(2022, 4, 30, 12),
+        gemUpdated: Date.UTC(2022, 4, 21, 0, 0),
+        gemAccumulationStart: Date.UTC(2022, 4, 21, 3),
+
+        hrrrTimelineStart: Date.UTC(2018, 2, 9, 18),
+        hrrrTimelineEnd: Date.UTC(2022, 4, 23, 6),
+        hrrrUpdated: Date.UTC(2022, 4, 21, 11, 0),
+        hrrrAccumulationStart: Date.UTC(2022, 4, 21, 11),
+
+        nbmTimelineStart: Date.UTC(2022, 0, 1, 0),
+        nbmTimelineEnd: Date.UTC(2022, 4, 22, 22),
+        nbmUpdated: Date.UTC(2022, 4, 21, 11, 0),
+
+        euradTimelineStart: Date.UTC(2019, 0, 1, 0),
+        euradTimelineEnd: Date.UTC(2022, 4, 21, 13),
+        euradUpdated: Date.UTC(2022, 4, 21, 14, 14),
+
+        usradTimelineStart: Date.UTC(2019, 0, 1, 0),
+        usradTimelineEnd: Date.UTC(2022, 4, 21, 13),
+        usradUpdated: Date.UTC(2022, 4, 21, 14, 10),
+
+        woradTimelineStart: Date.UTC(2019, 0, 1, 0),
+        woradTimelineEnd: Date.UTC(2022, 4, 21, 12),
+        woradUpdated: Date.UTC(2022, 4, 21, 14, 13),
+
+        silamTimelineStart: Date.UTC(2020, 1, 15, 0),
+        silamTimelineEnd: Date.UTC(2022, 4, 25, 0),
+        silamUpdated: Date.UTC(2022, 4, 21, 0, 0),
+
+        "silam-euTimelineStart": Date.UTC(2020, 1, 15, 0),
+        "silam-euTimelineEnd": Date.UTC(2022, 4, 26, 0),
+        "silam-euUpdated": Date.UTC(2022, 4, 21, 3, 0),
+
+        goesTimelineStart: Date.UTC(2020, 4, 1, 1),
+        goesTimelineEnd: Date.UTC(2022, 4, 21, 12),
+        goesUpdated: Date.UTC(2022, 4, 21, 12, 40),
+
+        rtofsTimelineStart: Date.UTC(2021, 5, 28, 0),
+        rtofsTimelineEnd: Date.UTC(2022, 4, 28, 0),
+        rtofsUpdated: Date.UTC(2022, 4, 20, 0, 0),
+
+        ovationTimelineStart: Date.UTC(2021, 3, 1, 0),
+        ovationTimelineEnd: Date.UTC(2022, 4, 21, 12),
+        ovationUpdated: Date.UTC(2022, 4, 21, 12, 0),
+
+        aromeTimelineStart: Date.UTC(2022, 3, 26, 0),
+        aromeTimelineEnd: Date.UTC(2022, 4, 22, 18),
+        aromeUpdated: Date.UTC(2022, 4, 21, 6, 0),
+        aromeAccumulationStart: Date.UTC(2022, 4, 21, 6),
+
+        iconTimelineStart: Date.UTC(2018, 0, 1, 0),
+        iconTimelineEnd: Date.UTC(2022, 4, 28, 12),
+        iconUpdated: Date.UTC(2022, 4, 21, 6, 0),
+        icon3hStart: Date.UTC(2022, 4, 24, 12),
+        iconAccumulationStart: Date.UTC(2022, 4, 21, 6),
+
+        "icon-euTimelineStart": Date.UTC(2018, 10, 0, 0),
+        "icon-euTimelineEnd": Date.UTC(2022, 4, 26, 6),
+        "icon-euUpdated": Date.UTC(2022, 4, 21, 9, 0),
+        "icon-eu3hStart": Date.UTC(2022, 4, 24, 12),
+        "icon-euAccumulationStart": Date.UTC(2022, 4, 21, 9),
+
+        "ecmwf-lresTimelineStart": Date.UTC(2022, 3, 10, 0),
+        "ecmwf-lresTimelineEnd": Date.UTC(2022, 4, 31, 0),
+        "ecmwf-lresUpdated": Date.UTC(2022, 4, 21, 0, 0),
+        "ecmwf-lres6hStart": Date.UTC(2022, 4, 27, 0),
+        "ecmwf-lresAccumulationStart": Date.UTC(2022, 4, 21, 0),
+
+        ecmwfTimelineStart: Date.UTC(1979, 5, 1, 0),
+        ecmwfTimelineEnd: Date.UTC(2020, 9, 31, 21),
+        ecmwfUpdated: Date.UTC(2021, 0, 29, 0, 0),
+
+        hurricanesUpdated: Date.UTC(2022, 4, 21, 12, 40),
+      };
+    </script>
+
+    <script src="https://cdnstatic.ventusky.com/media/script-en-us.js?1652162400"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async=""
+      src="https://www.googletagmanager.com/gtag/js?id=UA-851063-8"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-851063-8", { cookie_domain: "www.ventusky.com" });
+    </script>
+
+    <div id="i" data-title="Forecast">
+      <a class="rg" info="°F, ICON"
+        >Temperature<span class="temperature"></span
+      ></a>
+      <div>
+        <div class="nk ua qj">
+          <div class="hv">Altitude:</div>
+          <div class="bb">
+            <a>Sea surface</a><a>5 cm above ground</a
+            ><a class="rg">2 m above ground</a><a>Anomaly, 2 m</a
+            ><a>950 hPa, 500 m</a><a>925 hPa, 750 m</a><a>900 hPa, 1000 m</a
+            ><a>850 hPa, 1500 m</a><a>800 hPa, 2000 m</a><a>750 hPa, 2500 m</a
+            ><a>700 hPa, 3000 m</a><a>650 hPa, 3600 m</a><a>600 hPa, 4200 m</a
+            ><a>500 hPa, 5500 m</a><a>300 hPa, 9000 m</a><a>200 hPa, 12000 m</a
+            ><a>10 hPa, 30000 m</a><a>Freezing level</a
+            ><select>
+              <option value="temperature-water" style="">Sea surface</option>
+              <option value="temperature-5cm" style="">
+                5 cm above ground
+              </option>
+              <option value="temperature-2m" style="font-weight: bold">
+                2 m above ground
+              </option>
+              <option value="temperature-anomaly-2m" style="">
+                Anomaly, 2 m
+              </option>
+              <option value="temperature-950hpa" style="">
+                950 hPa, 500 m
+              </option>
+              <option value="temperature-925hpa" style="">
+                925 hPa, 750 m
+              </option>
+              <option value="temperature-900hpa" style="">
+                900 hPa, 1000 m
+              </option>
+              <option value="temperature-850hpa" style="font-weight: bold">
+                850 hPa, 1500 m
+              </option>
+              <option value="temperature-800hpa" style="">
+                800 hPa, 2000 m
+              </option>
+              <option value="temperature-750hpa" style="">
+                750 hPa, 2500 m
+              </option>
+              <option value="temperature-700hpa" style="font-weight: bold">
+                700 hPa, 3000 m
+              </option>
+              <option value="temperature-650hpa" style="">
+                650 hPa, 3600 m
+              </option>
+              <option value="temperature-600hpa" style="">
+                600 hPa, 4200 m
+              </option>
+              <option value="temperature-500hpa" style="font-weight: bold">
+                500 hPa, 5500 m
+              </option>
+              <option value="temperature-300hpa" style="font-weight: bold">
+                300 hPa, 9000 m
+              </option>
+              <option value="temperature-200hpa" style="">
+                200 hPa, 12000 m
+              </option>
+              <option value="temperature-10hpa" style="">
+                10 hPa, 30000 m
+              </option>
+              <option value="freezing" style="">Freezing level</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <a>Perceived temperature<span class="feel"></span></a>
+      <div></div>
+      <a>Precipitation<span class="rain"></span></a>
+      <div>
+        <div class="nk ua qj" style="display: none">
+          <div class="hv">Accumulation:</div>
+          <div class="bb">
+            <a>1 hour</a><a>3 hours</a><a>From 05/21 11:30 AM</a
+            ><a>Monthly anomaly</a
+            ><select>
+              <option value="rain-1h" style="">1 hour</option>
+              <option value="rain-3h" style="">3 hours</option>
+              <option value="rain-ac" style="">From 05/21 11:30 AM</option>
+              <option value="precipitation-anomaly" style="">
+                Monthly anomaly
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <a>Radar<span class="radar"></span></a>
+      <div></div>
+      <a>Satellite<span class="satellite"></span></a>
+      <div></div>
+      <a>Clouds<span class="clouds"></span></a>
+      <div>
+        <div class="nk ua qj" style="display: none">
+          <div class="hv">Type:</div>
+          <div class="bb">
+            <a>Total cloud cover</a><a>Fog</a><a>Low clouds</a
+            ><a>Middle clouds</a><a>High clouds</a
+            ><select>
+              <option value="clouds-total" style="">Total cloud cover</option>
+              <option value="clouds-fog" style="">Fog</option>
+              <option value="clouds-low" style="">Low clouds</option>
+              <option value="clouds-middle" style="">Middle clouds</option>
+              <option value="clouds-high" style="">High clouds</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <a>Wind speed<span class="wind"></span></a>
+      <div>
+        <div class="nk ua qj" style="display: none">
+          <div class="hv">Altitude:</div>
+          <div class="bb">
+            <a>10 m above ground</a><a>100 m above ground</a
+            ><a>250 m above ground</a><a>950 hPa, 500 m</a><a>925 hPa, 750 m</a
+            ><a>900 hPa, 1000 m</a><a>850 hPa, 1500 m</a><a>800 hPa, 2000 m</a
+            ><a>750 hPa, 2500 m</a><a>700 hPa, 3000 m</a><a>650 hPa, 3600 m</a
+            ><a>600 hPa, 4200 m</a><a>500 hPa, 5500 m</a><a>300 hPa, 9000 m</a
+            ><a>200 hPa, 12000 m</a><a>10 hPa, 30000 m</a
+            ><select>
+              <option value="wind-10m" style="font-weight: bold">
+                10 m above ground
+              </option>
+              <option value="wind-100m" style="">100 m above ground</option>
+              <option value="wind-250m" style="">250 m above ground</option>
+              <option value="wind-950hpa" style="">950 hPa, 500 m</option>
+              <option value="wind-925hpa" style="">925 hPa, 750 m</option>
+              <option value="wind-900hpa" style="">900 hPa, 1000 m</option>
+              <option value="wind-850hpa" style="font-weight: bold">
+                850 hPa, 1500 m
+              </option>
+              <option value="wind-800hpa" style="">800 hPa, 2000 m</option>
+              <option value="wind-750hpa" style="">750 hPa, 2500 m</option>
+              <option value="wind-700hpa" style="font-weight: bold">
+                700 hPa, 3000 m
+              </option>
+              <option value="wind-650hpa" style="">650 hPa, 3600 m</option>
+              <option value="wind-600hpa" style="">600 hPa, 4200 m</option>
+              <option value="wind-500hpa" style="font-weight: bold">
+                500 hPa, 5500 m
+              </option>
+              <option value="wind-300hpa" style="font-weight: bold">
+                300 hPa, 9000 m
+              </option>
+              <option value="wind-200hpa" style="">200 hPa, 12000 m</option>
+              <option value="wind-10hpa" style="">10 hPa, 30000 m</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <a>Wind gusts<span class="gust"></span></a>
+      <div>
+        <div class="nk ua qj" style="display: none">
+          <div class="hv">Maximum:</div>
+          <div class="bb">
+            <a>1 hour</a><a>From 05/21 11:30 AM</a
+            ><select>
+              <option value="gust" style="">1 hour</option>
+              <option value="gust-ac" style="">From 05/21 11:30 AM</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <a>Air pressure<span class="pressure"></span></a>
+      <div></div>
+      <a>Thunderstorms<span class="storm"></span></a>
+      <div>
+        <div class="nk ua qj" style="display: none">
+          <div class="hv">Index:</div>
+          <div class="bb">
+            <a>CAPE</a><a>CAPE*SHEAR</a><a>Wind shear</a><a>CIN</a
+            ><a>Lifted index</a><a>Helicity (SRH)</a
+            ><select>
+              <option value="cape" style="">CAPE</option>
+              <option value="cape-shear" style="">CAPE*SHEAR</option>
+              <option value="shear" style="">Wind shear</option>
+              <option value="cin" style="">CIN</option>
+              <option value="li" style="">Lifted index</option>
+              <option value="helicity" style="">Helicity (SRH)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <a>Humidity<span class="humidity"></span></a>
+      <div>
+        <div class="nk ua qj" style="display: none">
+          <div class="hv">Type:</div>
+          <div class="bb">
+            <a>2 m above ground</a><a>900 hPa, 1000 m</a><a>850 hPa, 1500 m</a
+            ><a>700 hPa, 3000 m</a><a>Dew point</a
+            ><select>
+              <option value="humidity" style="">2 m above ground</option>
+              <option value="humidity-900hpa" style="">900 hPa, 1000 m</option>
+              <option value="humidity-850hpa" style="">850 hPa, 1500 m</option>
+              <option value="humidity-700hpa" style="">700 hPa, 3000 m</option>
+              <option value="dew" style="">Dew point</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <a>Waves<span class="wave"></span></a>
+      <div>
+        <div class="nk ua qj" style="display: none">
+          <div class="hv">Type:</div>
+          <div class="bb">
+            <a>Significant wave height</a><a>Wind wave height</a
+            ><a>Wind wave period</a><a>Swell wave height</a
+            ><a>Swell wave period</a><a>Currents</a
+            ><select>
+              <option value="wave" style="">Significant wave height</option>
+              <option value="wind-wave" style="">Wind wave height</option>
+              <option value="wind-wave-period" style="">
+                Wind wave period
+              </option>
+              <option value="swell" style="">Swell wave height</option>
+              <option value="swell-period" style="">Swell wave period</option>
+              <option value="currents" style="">Currents</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <a>Snow cover<span class="snow"></span></a>
+      <div>
+        <div class="nk ua qj" style="display: none">
+          <div class="hv">Type:</div>
+          <div class="bb">
+            <a>Total cover</a><a>New from 05/21 11:30 AM</a
+            ><select>
+              <option value="snow" style="">Total cover</option>
+              <option value="new-snow-ac" style="">
+                New from 05/21 11:30 AM
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <a>Air quality<span class="air"></span></a>
+      <div>
+        <div class="nk ua qj" style="display: none">
+          <div class="hv">Substance:</div>
+          <div class="bb">
+            <a>PM2.5 🏭 🚜</a><a>PM10 🏭 🚜</a><a>NO2 🚗 🚢</a><a>SO2 🏭 🌋</a
+            ><a>O3 🌇</a><a>Dust 🌴</a><a>CO 🏭 🔥</a><a>AQI</a
+            ><select>
+              <option value="pm25" style="">PM2.5 🏭 🚜</option>
+              <option value="pm10" style="">PM10 🏭 🚜</option>
+              <option value="no2" style="">NO2 🚗 🚢</option>
+              <option value="so2" style="">SO2 🏭 🌋</option>
+              <option value="o3" style="">O3 🌇</option>
+              <option value="dust" style="">Dust 🌴</option>
+              <option value="co" style="">CO 🏭 🔥</option>
+              <option value="aqi" style="">AQI</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="nk xz qj">
+        <div class="bb">
+          <a class="rg">Temperature</a><a>Perceived temperature</a
+          ><a>Precipitation</a><a>Radar</a><a>Satellite</a><a>Clouds</a
+          ><a>Wind speed</a><a>Wind gusts</a><a>Air pressure</a
+          ><a>Thunderstorms</a><a>Humidity</a><a>Waves</a><a>Snow cover</a
+          ><a>Air quality</a
+          ><select>
+            <option value="temperature" style="">Temperature</option>
+            <option value="feel" style="">Perceived temperature</option>
+            <option value="rain" style="">Precipitation</option>
+            <option value="radar" style="">Radar</option>
+            <option value="satellite" style="">Satellite</option>
+            <option value="clouds" style="">Clouds</option>
+            <option value="wind" style="">Wind speed</option>
+            <option value="gust" style="">Wind gusts</option>
+            <option value="pressure" style="">Air pressure</option>
+            <option value="storm" style="">Thunderstorms</option>
+            <option value="humidity" style="">Humidity</option>
+            <option value="wave" style="">Waves</option>
+            <option value="snow" style="">Snow cover</option>
+            <option value="air" style="">Air quality</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div id="k">
+      <a class="c u">Play<span></span></a
+      ><a class="c q">Previous<span></span></a
+      ><a class="c t">Next<span></span></a
+      ><a class="c w">Change date<span style="">Today, 2022/05/21</span></a
+      ><a class="c e" style="display: none">Show present-day forecast</a
+      ><span class="j"
+        ><a
+          class="o n my ha bx"
+          title="2022/05/21 5:30 AM"
+          style="left: 21.739%"
+          >5:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:40 AM"
+          style="left: 22.464%; display: none"
+          >5:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:50 AM"
+          style="left: 23.188%; display: none"
+          >5:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:00 AM"
+          style="left: 23.913%; display: none"
+          >6:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:10 AM"
+          style="left: 24.638%; display: none"
+          >6:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:20 AM"
+          style="left: 25.362%; display: none"
+          >6:20<br /><small>AM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 6:30 AM"
+          style="left: 26.087%"
+          >6:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:40 AM"
+          style="left: 26.812%; display: none"
+          >6:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:50 AM"
+          style="left: 27.536%; display: none"
+          >6:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:00 AM"
+          style="left: 28.261%; display: none"
+          >7:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:10 AM"
+          style="left: 28.986%; display: none"
+          >7:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:20 AM"
+          style="left: 29.71%; display: none"
+          >7:20<br /><small>AM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 7:30 AM"
+          style="left: 30.435%"
+          >7:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:40 AM"
+          style="left: 31.159%; display: none"
+          >7:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:50 AM"
+          style="left: 31.884%; display: none"
+          >7:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:00 AM"
+          style="left: 32.609%; display: none"
+          >8:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:10 AM"
+          style="left: 33.333%; display: none"
+          >8:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:20 AM"
+          style="left: 34.058%; display: none"
+          >8:20<br /><small>AM</small></a
+        ><a
+          class="o n my cj lp"
+          title="2022/05/21 8:30 AM"
+          style="left: 34.783%"
+          >8:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:40 AM"
+          style="left: 35.507%; display: none"
+          >8:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:50 AM"
+          style="left: 36.232%; display: none"
+          >8:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:00 AM"
+          style="left: 36.957%; display: none"
+          >9:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:10 AM"
+          style="left: 37.681%; display: none"
+          >9:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:20 AM"
+          style="left: 38.406%; display: none"
+          >9:20<br /><small>AM</small></a
+        ><a class="o n dv cj lp" title="2022/05/21 9:30 AM" style="left: 39.13%"
+          >9:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:40 AM"
+          style="left: 39.855%; display: none"
+          >9:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:50 AM"
+          style="left: 40.58%; display: none"
+          >9:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:00 AM"
+          style="left: 41.304%; display: none"
+          >10:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:10 AM"
+          style="left: 42.029%; display: none"
+          >10:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:20 AM"
+          style="left: 42.754%; display: none"
+          >10:20<br /><small>AM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 10:30 AM"
+          style="left: 43.478%"
+          >10:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:40 AM"
+          style="left: 44.203%; display: none"
+          >10:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:50 AM"
+          style="left: 44.928%; display: none"
+          >10:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:00 AM"
+          style="left: 45.652%; display: none"
+          >11:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:10 AM"
+          style="left: 46.377%; display: none"
+          >11:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:20 AM"
+          style="left: 47.101%; display: none"
+          >11:20<br /><small>AM</small></a
+        ><a
+          class="o n my ha lp"
+          title="2022/05/21 11:30 AM"
+          style="left: 47.826%"
+          >11:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:40 AM"
+          style="left: 48.551%; display: none"
+          >11:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:50 AM"
+          style="left: 49.275%; display: none"
+          >11:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 12:00 PM"
+          style="left: 50%; display: none"
+          >12:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 12:10 PM"
+          style="left: 50.725%; display: none"
+          >12:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 12:20 PM"
+          style="left: 51.449%; display: none"
+          >12:20<br /><small>PM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 12:30 PM"
+          style="left: 52.174%"
+          >12:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 12:40 PM"
+          style="left: 52.899%; display: none"
+          >12:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 12:50 PM"
+          style="left: 53.623%; display: none"
+          >12:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:00 PM"
+          style="left: 54.348%; display: none"
+          >1:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:10 PM"
+          style="left: 55.072%; display: none"
+          >1:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:20 PM"
+          style="left: 55.797%; display: none"
+          >1:20<br /><small>PM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 1:30 PM"
+          style="left: 56.522%"
+          >1:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:40 PM"
+          style="left: 57.246%; display: none"
+          >1:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:50 PM"
+          style="left: 57.971%; display: none"
+          >1:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:00 PM"
+          style="left: 58.696%; display: none"
+          >2:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:10 PM"
+          style="left: 59.42%; display: none"
+          >2:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:20 PM"
+          style="left: 60.145%; display: none"
+          >2:20<br /><small>PM</small></a
+        ><a class="o n my cj lp" title="2022/05/21 2:30 PM" style="left: 60.87%"
+          >2:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:40 PM"
+          style="left: 61.594%; display: none"
+          >2:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:50 PM"
+          style="left: 62.319%; display: none"
+          >2:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:00 PM"
+          style="left: 63.043%; display: none"
+          >3:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:10 PM"
+          style="left: 63.768%; display: none"
+          >3:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:20 PM"
+          style="left: 64.493%; display: none"
+          >3:20<br /><small>PM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 3:30 PM"
+          style="left: 65.217%"
+          >3:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:40 PM"
+          style="left: 65.942%; display: none"
+          >3:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:50 PM"
+          style="left: 66.667%; display: none"
+          >3:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:00 PM"
+          style="left: 67.391%; display: none"
+          >4:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:10 PM"
+          style="left: 68.116%; display: none"
+          >4:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:20 PM"
+          style="left: 68.841%; display: none"
+          >4:20<br /><small>PM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 4:30 PM"
+          style="left: 69.565%"
+          >4:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:40 PM"
+          style="left: 70.29%; display: none"
+          >4:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:50 PM"
+          style="left: 71.014%; display: none"
+          >4:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:00 PM"
+          style="left: 71.739%; display: none"
+          >5:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:10 PM"
+          style="left: 72.464%; display: none"
+          >5:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:20 PM"
+          style="left: 73.188%; display: none"
+          >5:20<br /><small>PM</small></a
+        ><a
+          class="o n my ha bx"
+          title="2022/05/21 5:30 PM"
+          style="left: 73.913%"
+          >5:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:40 PM"
+          style="left: 74.638%; display: none"
+          >5:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:50 PM"
+          style="left: 75.362%; display: none"
+          >5:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:00 PM"
+          style="left: 76.087%; display: none"
+          >6:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:10 PM"
+          style="left: 76.812%; display: none"
+          >6:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:20 PM"
+          style="left: 77.536%; display: none"
+          >6:20<br /><small>PM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 6:30 PM"
+          style="left: 78.261%"
+          >6:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:40 PM"
+          style="left: 78.986%; display: none"
+          >6:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 6:50 PM"
+          style="left: 79.71%; display: none"
+          >6:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:00 PM"
+          style="left: 80.435%; display: none"
+          >7:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:10 PM"
+          style="left: 81.159%; display: none"
+          >7:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:20 PM"
+          style="left: 81.884%; display: none"
+          >7:20<br /><small>PM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 7:30 PM"
+          style="left: 82.609%"
+          >7:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:40 PM"
+          style="left: 83.333%; display: none"
+          >7:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 7:50 PM"
+          style="left: 84.058%; display: none"
+          >7:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:00 PM"
+          style="left: 84.783%; display: none"
+          >8:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:10 PM"
+          style="left: 85.507%; display: none"
+          >8:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:20 PM"
+          style="left: 86.232%; display: none"
+          >8:20<br /><small>PM</small></a
+        ><a
+          class="o n my cj lp"
+          title="2022/05/21 8:30 PM"
+          style="left: 86.957%"
+          >8:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:40 PM"
+          style="left: 87.681%; display: none"
+          >8:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 8:50 PM"
+          style="left: 88.406%; display: none"
+          >8:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:00 PM"
+          style="left: 89.13%; display: none"
+          >9:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:10 PM"
+          style="left: 89.855%; display: none"
+          >9:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:20 PM"
+          style="left: 90.58%; display: none"
+          >9:20<br /><small>PM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 9:30 PM"
+          style="left: 91.304%"
+          >9:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:40 PM"
+          style="left: 92.029%; display: none"
+          >9:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 9:50 PM"
+          style="left: 92.754%; display: none"
+          >9:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:00 PM"
+          style="left: 93.478%; display: none"
+          >10:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:10 PM"
+          style="left: 94.203%; display: none"
+          >10:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:20 PM"
+          style="left: 94.928%; display: none"
+          >10:20<br /><small>PM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 10:30 PM"
+          style="left: 95.652%"
+          >10:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:40 PM"
+          style="left: 96.377%; display: none"
+          >10:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 10:50 PM"
+          style="left: 97.101%; display: none"
+          >10:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:00 PM"
+          style="left: 97.826%; display: none"
+          >11:00<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:10 PM"
+          style="left: 98.551%; display: none"
+          >11:10<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:20 PM"
+          style="left: 99.275%; display: none"
+          >11:20<br /><small>PM</small></a
+        ><a class="o n my ha lp" title="2022/05/21 11:30 PM" style="left: 100%"
+          >11:30<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:40 PM"
+          style="left: 100.725%; display: none"
+          >11:40<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 11:50 PM"
+          style="left: 101.449%; display: none"
+          >11:50<br /><small>PM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/22 12:00 AM"
+          style="left: 102.174%; display: none"
+          >12:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/22 12:10 AM"
+          style="left: 102.899%; display: none"
+          >12:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/22 12:20 AM"
+          style="left: 103.623%; display: none"
+          >12:20<br /><small>AM</small></a
+        ><a class="o n dv cj lp" title="2022/05/21 12:30 AM" style="left: 0%"
+          >12:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 12:40 AM"
+          style="left: 0.725%; display: none"
+          >12:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 12:50 AM"
+          style="left: 1.449%; display: none"
+          >12:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:00 AM"
+          style="left: 2.174%; display: none"
+          >1:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:10 AM"
+          style="left: 2.899%; display: none"
+          >1:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:20 AM"
+          style="left: 3.623%; display: none"
+          >1:20<br /><small>AM</small></a
+        ><a class="o n dv cj lp" title="2022/05/21 1:30 AM" style="left: 4.348%"
+          >1:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:40 AM"
+          style="left: 5.072%; display: none"
+          >1:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 1:50 AM"
+          style="left: 5.797%; display: none"
+          >1:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:00 AM"
+          style="left: 6.522%; display: none"
+          >2:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:10 AM"
+          style="left: 7.246%; display: none"
+          >2:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:20 AM"
+          style="left: 7.971%; display: none"
+          >2:20<br /><small>AM</small></a
+        ><a class="o n my cj lp" title="2022/05/21 2:30 AM" style="left: 8.696%"
+          >2:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:40 AM"
+          style="left: 9.42%; display: none"
+          >2:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 2:50 AM"
+          style="left: 10.145%; display: none"
+          >2:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:00 AM"
+          style="left: 10.87%; display: none"
+          >3:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:10 AM"
+          style="left: 11.594%; display: none"
+          >3:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:20 AM"
+          style="left: 12.319%; display: none"
+          >3:20<br /><small>AM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 3:30 AM"
+          style="left: 13.043%"
+          >3:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:40 AM"
+          style="left: 13.768%; display: none"
+          >3:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 3:50 AM"
+          style="left: 14.493%; display: none"
+          >3:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:00 AM"
+          style="left: 15.217%; display: none"
+          >4:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:10 AM"
+          style="left: 15.942%; display: none"
+          >4:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:20 AM"
+          style="left: 16.667%; display: none"
+          >4:20<br /><small>AM</small></a
+        ><a
+          class="o n dv cj lp"
+          title="2022/05/21 4:30 AM"
+          style="left: 17.391%"
+          >4:30<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:40 AM"
+          style="left: 18.116%; display: none"
+          >4:40<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 4:50 AM"
+          style="left: 18.841%; display: none"
+          >4:50<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:00 AM"
+          style="left: 19.565%; display: none"
+          >5:00<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:10 AM"
+          style="left: 20.29%; display: none"
+          >5:10<br /><small>AM</small></a
+        ><a
+          class="o a dv cj lp"
+          title="2022/05/21 5:20 AM"
+          style="left: 21.014%; display: none"
+          >5:20<br /><small>AM</small></a
+        ><span
+          class="f o n dv cj lp"
+          time="6:30 PM"
+          style="left: 78.261%"
+        ></span
+      ></span>
+      <div id="d" class="d">
+        <a class="g"></a
+        ><select id="p">
+          <option value="1979">1979</option>
+          <option value="1980">1980</option>
+          <option value="1981">1981</option>
+          <option value="1982">1982</option>
+          <option value="1983">1983</option>
+          <option value="1984">1984</option>
+          <option value="1985">1985</option>
+          <option value="1986">1986</option>
+          <option value="1987">1987</option>
+          <option value="1988">1988</option>
+          <option value="1989">1989</option>
+          <option value="1990">1990</option>
+          <option value="1991">1991</option>
+          <option value="1992">1992</option>
+          <option value="1993">1993</option>
+          <option value="1994">1994</option>
+          <option value="1995">1995</option>
+          <option value="1996">1996</option>
+          <option value="1997">1997</option>
+          <option value="1998">1998</option>
+          <option value="1999">1999</option>
+          <option value="2000">2000</option>
+          <option value="2001">2001</option>
+          <option value="2002">2002</option>
+          <option value="2003">2003</option>
+          <option value="2004">2004</option>
+          <option value="2005">2005</option>
+          <option value="2006">2006</option>
+          <option value="2007">2007</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+          <option value="2010">2010</option>
+          <option value="2011">2011</option>
+          <option value="2012">2012</option>
+          <option value="2013">2013</option>
+          <option value="2014">2014</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option></select
+        ><select id="r">
+          <option value="0">January</option>
+          <option value="1">February</option>
+          <option value="2">March</option>
+          <option value="3">April</option>
+          <option value="4">May</option>
+          <option value="-1">Current days</option>
+        </select>
+        <table>
+          <tbody>
+            <tr>
+              <th>Su</th>
+              <th>Mo</th>
+              <th>Tu</th>
+              <th>We</th>
+              <th>Th</th>
+              <th>Fr</th>
+              <th>Sa</th>
+            </tr>
+            <tr></tr>
+            <tr>
+              <td><a>15</a></td>
+              <td><a>16</a></td>
+              <td><a>17</a></td>
+              <td><a>18</a></td>
+              <td><a>19</a></td>
+              <td><a>20</a></td>
+              <td class="ls"><a class="rg">21</a></td>
+            </tr>
+            <tr>
+              <td><a>22</a></td>
+              <td><a>23</a></td>
+              <td><a>24</a></td>
+              <td><a>25</a></td>
+              <td><a>26</a></td>
+              <td><a>27</a></td>
+              <td><a>28</a></td>
+            </tr>
+            <tr class="qw">
+              <td><a>29</a><i>May</i></td>
+              <td><a>30</a></td>
+              <td class="qw"><a>31</a></td>
+              <td><a>01</a></td>
+              <td><a>02</a></td>
+              <td><a>03</a></td>
+              <td><a>04</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ll rw">
+        <ul style="transform: translateX(0px) translate3d(0px, 0px, 0px)">
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1004.23px) rotateY(-1.059rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.51);
+              color: rgba(255, 255, 255, 0.49);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1109.17px) rotateY(-0.847rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.337);
+              color: rgba(255, 255, 255, 0.663);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1175.55px) rotateY(-0.635rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.196);
+              color: rgba(255, 255, 255, 0.804);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1211.4px) rotateY(-0.423rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.086);
+              color: rgba(255, 255, 255, 0.914);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1226.11px) rotateY(-0.212rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.024);
+              color: rgba(255, 255, 255, 0.976);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1230px) rotateY(0rad)
+                translate3d(0px, 0px, 0px);
+              background: rgb(247, 167, 21);
+            "
+          >
+            We<br /><small>May 18</small>
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1233.89px) rotateY(0.212rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.024);
+              color: rgba(255, 255, 255, 0.976);
+            "
+          >
+            Th<br /><small>May 19</small>
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1248.6px) rotateY(0.423rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.086);
+              color: rgba(255, 255, 255, 0.914);
+            "
+          >
+            Fr<br /><small>May 20</small>
+          </li>
+          <li
+            class="ls"
+            style="
+              width: 246px;
+              transform: translateX(-1284.45px) rotateY(0.635rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.196);
+              color: rgba(255, 255, 255, 0.804);
+            "
+          >
+            Sa<br /><small>May 21</small>
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1350.83px) rotateY(0.847rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.337);
+              color: rgba(255, 255, 255, 0.663);
+            "
+          >
+            Su<br /><small>May 22</small>
+          </li>
+        </ul>
+        <div class="zg"><div style="width: 5718px"></div></div>
+      </div>
+      <div class="ll bm">
+        <ul style="transform: translateX(0px) translate3d(0px, 0px, 0px)">
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1004.23px) rotateY(-1.059rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.51);
+              color: rgba(255, 255, 255, 0.49);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1109.17px) rotateY(-0.847rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.337);
+              color: rgba(255, 255, 255, 0.663);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1175.55px) rotateY(-0.635rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.196);
+              color: rgba(255, 255, 255, 0.804);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1211.4px) rotateY(-0.423rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.086);
+              color: rgba(255, 255, 255, 0.914);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1226.11px) rotateY(-0.212rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.024);
+              color: rgba(255, 255, 255, 0.976);
+            "
+          >
+            &nbsp;
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1230px) rotateY(0rad)
+                translate3d(0px, 0px, 0px);
+              background: rgb(247, 167, 21);
+            "
+          >
+            5 <small>AM</small>
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1233.89px) rotateY(0.212rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.024);
+              color: rgba(255, 255, 255, 0.976);
+            "
+          >
+            8 <small>AM</small>
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1248.6px) rotateY(0.423rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.086);
+              color: rgba(255, 255, 255, 0.914);
+            "
+          >
+            11 <small>AM</small>
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1284.45px) rotateY(0.635rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.196);
+              color: rgba(255, 255, 255, 0.804);
+            "
+          >
+            2 <small>PM</small>
+          </li>
+          <li
+            class=""
+            style="
+              width: 246px;
+              transform: translateX(-1350.83px) rotateY(0.847rad)
+                translate3d(0px, 0px, 0px);
+              background: rgba(0, 0, 0, 0.337);
+              color: rgba(255, 255, 255, 0.663);
+            "
+          >
+            5 <small>PM</small>
+          </li>
+        </ul>
+        <div class="zg"><div style="width: 59100px"></div></div>
+      </div>
+    </div>
+    <span class="xx" style=""
+      ><span class="yn"></span><span class="dm"></span><span class="tz"></span
+    ></span>
+    <div class="nk l qj">
+      <div class="hv">Model:</div>
+      <div class="bb">
+        <a class="rg">Automatic (ICON)</a><a>Global models</a><a>ICON</a
+        ><a>GFS</a><a>ECMWF</a><a>ECMWF</a><a>GEM</a><a>Regional models</a
+        ><a>ICON (EU)</a><a>WORAD</a><a>EURAD (EU)</a><a>USRAD (USA)</a
+        ><a>HRRR (USA)</a><a>NBM (USA)</a><a>ICON (DE)</a><a>AROME (FR)</a
+        ><a>GOES</a><a>GOES16</a><a>METEOSAT</a><a>HIMAWARI</a><a>SILAM</a
+        ><a>SILAM (EU)</a><a>RTOFS</a
+        ><select>
+          <option value="auto" style="">Automatic (ICON)</option>
+          <optgroup label="Global models">
+            <option value="icon" style="">ICON</option>
+            <option value="gfs" style="">GFS</option>
+            <option value="ecmwf_lres" style="">ECMWF</option>
+            <option value="gem" style="">GEM</option>
+          </optgroup>
+          <optgroup label="Regional models">
+            <option value="icon_eu" style="">ICON (EU)</option>
+            <option value="hrrr" style="">HRRR (USA)</option>
+            <option value="nbm" style="">NBM (USA)</option>
+            <option value="icon_de" style="">ICON (DE)</option>
+            <option value="arome" style="">AROME (FR)</option>
+          </optgroup>
+        </select>
+      </div>
+      <span id="v"></span>
+    </div>
+    <div class="nk h qj">
+      <div class="hv">Wind animation:</div>
+      <div class="bb">
+        <a>Off</a><a class="rg">Normal</a><a>Strong</a><a>Soft</a><a>Dark</a
+        ><a>Fast-motion</a
+        ><select>
+          <option value="off" style="">Off</option>
+          <option value="normal" style="">Normal</option>
+          <option value="strong" style="">Strong</option>
+          <option value="soft" style="">Soft</option>
+          <option value="dark" style="">Dark</option>
+          <option value="fast" style="">Fast-motion</option>
+        </select>
+      </div>
+    </div>
+    <a class="z x" title="Zoom in"></a><a class="z b" title="Zoom out"></a>
+    <div id="m" class="d">
+      <div>
+        <p>
+          Data: ICON,
+          <a href="http://www.dwd.de" target="_blank">DWD</a> (resolution 13
+          km)<br />Updated: 6:00 AM UTC (next update: 12:00 PM UTC - prepare)<br />Current
+          time: 6:30 PM, 2022/05/21 (UTC+05:30)
+        </p>
+        <p>
+          For this output data, temperature is shown for 2 m above ground. The
+          calculations take into account the terrain (elevation), but with lower
+          resolution than in reality. Therefore the models cannot differentiate,
+          for instance, the temperature on a mountain peak or on a city square
+          scorched by the sun. The general rule is that the centres of large
+          cities are 1 °C to 3 °C warmer than the surrounding area or natural
+          landscapes. Significant temperature differences over a small area are
+          primarily caused in the winter by an inversion. A short yet noticeable
+          cooling can also occur after a local summer storm.
+        </p>
+      </div>
+      <a class="g"></a>
+    </div>
+    <div id="x" class="">
+      <canvas width="976" height="722"></canvas
+      ><canvas width="976" height="722" style="opacity: 0.65"></canvas
+      ><canvas
+        width="976"
+        height="722"
+        style="
+          opacity: 0.529687;
+          transform: translate(-1px, 0px) translate3d(0px, 0px, 0px);
+        "
+      ></canvas
+      ><canvas width="976" height="722"></canvas
+      ><canvas width="976" height="722"></canvas>
+      <div
+        id="b"
+        style="
+          transform-origin: 0px 0px;
+          transform: scale(1) translate3d(0px, 0px, 0px);
+          width: 976px;
+          height: 722px;
+        "
+      >
+        <span
+          class="pq"
+          style="
+            transform: translate(-50%, 0px) scale(1)
+              translate(-10000px, -10000px) translate3d(0px, 0px, 0px);
+          "
+          >46 °F</span
+        ><a
+          class="qo am bf"
+          title=""
+          href="shanghai"
+          style="
+            transform: translate(110.856px, 410px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >上海 (Shanghai)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="mumbai"
+          style="
+            transform: translate(-27.112px, 448px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Mumbai<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="istanbul"
+          style="
+            transform: translate(-152.475px, 375px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >İstanbul<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="maynila"
+          style="
+            transform: translate(109.144px, 461px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Maynila<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="moscow"
+          style="
+            transform: translate(-127.894px, 312px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Москва (Moscow)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="dhaka"
+          style="
+            transform: translate(22.888px, 434px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >ঢাকা (Dhaka)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="lagos"
+          style="
+            transform: translate(-225.7px, 485px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Lagos<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="tokyo"
+          style="
+            transform: translate(162.019px, 395px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >東京 (Tokyo)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="tehran"
+          style="
+            transform: translate(-88.987px, 395px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >تهران (Tehran)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="harbin"
+          style="
+            transform: translate(125.263px, 357px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >哈尔滨 (Harbin)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="jakarta"
+          style="
+            transform: translate(68.025px, 521px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Jakarta<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="kinshasa"
+          style="
+            transform: translate(-191.369px, 516px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Kinshasa<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="sydney"
+          style="
+            transform: translate(195.406px, 606px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Sydney<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="ciudad-de-mexico"
+          style="
+            transform: translate(507.763px, 447px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Ciudad de México<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="new-york"
+          style="
+            transform: translate(578.375px, 376px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >New York<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="bogota"
+          style="
+            transform: translate(578.288px, 490px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Bogotá<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="london"
+          style="
+            transform: translate(788.413px, 332px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >London<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="buenos-aires"
+          style="
+            transform: translate(623.575px, 609px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Buenos Aires<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="lima"
+          style="
+            transform: translate(569.563px, 538px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Lima<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="rio-de-janeiro"
+          style="
+            transform: translate(666.313px, 570px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Rio de Janeiro<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="shanghai"
+          style="
+            transform: translate(1134.86px, 410px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >上海 (Shanghai)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="mumbai"
+          style="
+            transform: translate(996.888px, 448px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Mumbai<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="istanbul"
+          style="
+            transform: translate(871.525px, 375px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >İstanbul<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="maynila"
+          style="
+            transform: translate(1133.14px, 461px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Maynila<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="moscow"
+          style="
+            transform: translate(896.106px, 312px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Москва (Moscow)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="dhaka"
+          style="
+            transform: translate(1046.89px, 434px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >ঢাকা (Dhaka)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="lagos"
+          style="
+            transform: translate(798.3px, 485px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Lagos<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="tokyo"
+          style="
+            transform: translate(1186.02px, 395px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >東京 (Tokyo)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="tehran"
+          style="
+            transform: translate(935.013px, 395px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >تهران (Tehran)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="harbin"
+          style="
+            transform: translate(1149.26px, 357px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >哈尔滨 (Harbin)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="jakarta"
+          style="
+            transform: translate(1092.03px, 521px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Jakarta<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="kinshasa"
+          style="
+            transform: translate(832.631px, 516px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Kinshasa<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="sydney"
+          style="
+            transform: translate(1219.41px, 606px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          >Sydney<span></span></a
+        ><a
+          class="qo am zh os sx"
+          title=""
+          href="-19.967;168.767"
+          style="
+            transform: translate(1269.98px, 561.98px) translate(-50%, -100%)
+              translate3d(0px, 0px, 0px);
+          "
+          data-value=" "
+          >Gina<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="tokyo"
+          style="
+            transform: translate(-10000px, -10000px) translate3d(0px, 0px, 0px);
+          "
+          >東京 (Tokyo)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="tehran"
+          style="
+            transform: translate(-10000px, -10000px) translate3d(0px, 0px, 0px);
+          "
+          >تهران (Tehran)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="harbin"
+          style="
+            transform: translate(-10000px, -10000px) translate3d(0px, 0px, 0px);
+          "
+          >哈尔滨 (Harbin)<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="jakarta"
+          style="
+            transform: translate(-10000px, -10000px) translate3d(0px, 0px, 0px);
+          "
+          >Jakarta<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="kinshasa"
+          style="
+            transform: translate(-10000px, -10000px) translate3d(0px, 0px, 0px);
+          "
+          >Kinshasa<span></span></a
+        ><a
+          class="qo am bf"
+          title=""
+          href="sydney"
+          style="
+            transform: translate(-10000px, -10000px) translate3d(0px, 0px, 0px);
+          "
+          >Sydney<span></span></a
+        ><a
+          class="qo am zh os sx"
+          data-value=" "
+          title=""
+          href="-19.967;168.767"
+          style="
+            transform: translate(-10000px, -10000px) translate3d(0px, 0px, 0px);
+          "
+          >Gina<span></span
+        ></a>
+      </div>
+      <svg width="100%" height="100%"></svg>
+    </div>
+    <div id="h" title="Change units to “°C”" class="yy">
+      <span class="ew" style="">°F</span
+      ><span
+        class="lb"
+        style="background: rgb(53, 4, 11); color: rgb(255, 255, 255)"
+        >120</span
+      ><span
+        class="lb"
+        style="background: rgb(114, 22, 56); color: rgb(255, 255, 255)"
+        >100</span
+      ><span
+        class="lb"
+        style="background: rgba(175, 46, 90, 0.92); color: rgb(255, 255, 255)"
+        >90</span
+      ><span
+        class="lb"
+        style="background: rgba(223, 87, 98, 0.92); color: rgb(255, 255, 255)"
+        >80</span
+      ><span
+        class="lb"
+        style="background: rgba(234, 154, 65, 0.92); color: rgb(0, 0, 0)"
+        >70</span
+      ><span
+        class="lb"
+        style="background: rgba(235, 211, 53, 0.92); color: rgb(0, 0, 0)"
+        >60</span
+      ><span
+        class="lb"
+        style="background: rgba(190, 228, 61, 0.92); color: rgb(0, 0, 0)"
+        >50</span
+      ><span
+        class="lb"
+        style="background: rgba(79, 207, 70, 0.92); color: rgb(0, 0, 0)"
+        >40</span
+      ><span
+        class="lb"
+        style="background: rgba(70, 171, 166, 0.92); color: rgb(255, 255, 255)"
+        >30</span
+      ><span
+        class="lb"
+        style="background: rgba(70, 101, 193, 0.92); color: rgb(255, 255, 255)"
+        >20</span
+      ><span
+        class="lb"
+        style="background: rgba(82, 71, 141, 0.92); color: rgb(255, 255, 255)"
+        >10</span
+      ><span
+        class="lb"
+        style="background: rgba(116, 8, 116, 0.92); color: rgb(255, 255, 255)"
+        >0</span
+      ><span
+        class="lb"
+        style="background: rgba(203, 0, 203, 0.92); color: rgb(255, 255, 255)"
+        >−10</span
+      ><span
+        class="lb"
+        style="background: rgba(255, 128, 255, 0.92); color: rgb(0, 0, 0)"
+        >−20</span
+      ><span
+        class="lb"
+        style="background: rgba(238, 238, 238, 0.92); color: rgb(0, 0, 0)"
+        >−40</span
+      >
+      <div id="z"></div>
+    </div>
+    <div id="l" class="" style="left: 1008px; top: 197px">
+      <a href="72.712;-21.797" data-distance="0 km">73°N 22°W</a>
+    </div>
+  </body>
+</html>

@@ -1,5 +1,6 @@
 class SmartMobilityController < ApplicationController
-
+  before_action :authenticate_user!  
+  
   def mobility_dashboard
   end
 

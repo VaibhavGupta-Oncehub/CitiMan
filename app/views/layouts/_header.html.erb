@@ -1,25 +1,22 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top ">
   <div class="container d-flex align-items-center">
-
     <h1 class="logo me-auto"><%= link_to "CITIMAN", root_path%></h1>
-
     <nav id="navbar" class="navbar">
       <ul>
         <li><%= link_to "Home", root_path, class: "nav-link scrollto"  %></li>
         <li><%= link_to "About", root_path+"#about", class: "nav-link scrollto"%></li>
         <li><%= link_to "Services", root_path+"#services", class: "nav-link scrollto" %></li>
         <li><%= link_to "Team", root_path+"#team", class: "nav-link scrollto"%> </li>
-
-        <li class="dropdown"><%= link_to "Citiman Navigator",navigator_home_path, class:"bi bi-chevron-down ml-2" %>
-          <ul>
-            <li><%=link_to "Smart Mobility",smart_mobility_dashboard_path%></li>
-            <li><a href="#">Smart Environment</a></li>
-            <li><a href="#">Smart People</a></li>
-            <li><a href="#">Smart Energy</a></li>
-          </ul>
-        </li>
+        <li><%= link_to "Account Help Desk", helpdesk_path, class: "nav-link scrollto"  %></li>
         <% if user_signed_in? %>
+          <li class="dropdown"><%= link_to "Citiman Navigator",navigator_home_path, class:"bi bi-chevron-down ml-2" %>
+            <ul>
+              <li><%=link_to "Smart Mobility",smart_mobility_dashboard_path%></li>
+              <li><%=link_to "Smart Environment",smart_environment_dashboard_path%></li>
+              <li><%=link_to "Smart Energy",smart_energy_dashboard_path%></li>
+            </ul>
+          </li>
           <%= link_to "Logout",destroy_user_session_path, class: "getstarted", method: :delete  %>
         <% else %>
           <%= link_to "Login",new_user_session_path, class: "getstarted"  %>
@@ -27,7 +24,6 @@
       </ul>
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav><!-- .navbar -->
-
   </div>
 </header>
 <!-- End Header -->
