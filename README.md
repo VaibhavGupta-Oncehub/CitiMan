@@ -62,4 +62,5 @@ CitiMan was built using ruby on rails along with boostrap and devise gems.
 
 
 ## Project Demo
-https://drive.google.com/file/d/1lwKjNZu94PzO5U-1N0--Hz9VaRIpzb-d/view?usp=sharing
+https://drive.google.com/file/d/1ayTFBRYA7DSjXkCYU7N5XsS-xceTQryv/view?usp=sharing
+
